@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as API from 'services/api';
-import TrendingList from 'components/TrendingList';
+import TrendingList from 'components/Trending';
 
 export default function Home() {
   // Створення стану для збереження списку популярних фільмів
