@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import noImagePlaceholder from 'images/no-image-placeholder.jpg';
 import PropTypes from 'prop-types';
+import { LinkMovie } from './Trending.styled';
 
 export default function TrendingList({ items }) {
   const location = useLocation();
@@ -11,7 +12,7 @@ export default function TrendingList({ items }) {
         {items.map(item => {
           return (
             <li key={item.id}>
-              <link to={`/movies/${item.id}`} state={{ from: location }}>
+              <LinkMovie to={`/movies/${item.id}`} state={{ from: location }}>
                 <div>
                   <div>
                     <img
@@ -30,7 +31,7 @@ export default function TrendingList({ items }) {
                     {item.title ?? item.name ?? item.original_title ?? 'Title'}
                   </p>
                 </div>
-              </link>
+              </LinkMovie>
             </li>
           );
         })}

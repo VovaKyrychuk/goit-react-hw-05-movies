@@ -1,21 +1,25 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { Header, NavWrapper, Nav, Title, Link } from './SharedLayout.styled';
+
 import Loading from 'components/Loader';
 
 export default function SharedLayout() {
   return (
     <>
-      <header>
+      <Header>
         <div>
-          <div>
-            <title>Movie - DataBase</title>
-          </div>
-          <nav>
-            <link to="/">Home</link>
-            <link to="/movies">Movies</link>
-          </nav>
+          <NavWrapper>
+            <div>
+              <Title>Movie - DataBase</Title>
+            </div>
+            <Nav>
+              <Link to="/">Home</Link>
+              <Link to="/movies">Movies</Link>
+            </Nav>
+          </NavWrapper>
         </div>
-      </header>
+      </Header>
       <Suspense fallback={<Loading />}>
         <Outlet />
       </Suspense>
