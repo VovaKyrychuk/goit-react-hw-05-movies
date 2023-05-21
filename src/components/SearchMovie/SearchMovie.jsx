@@ -8,7 +8,7 @@ export default function SearchMovie({ title, onChange, onSubmit }) {
           type="text"
           name="title"
           autoComplete="off"
-          value="title"
+          value={title}
           autoFocus
           onChange={onChange}
         />

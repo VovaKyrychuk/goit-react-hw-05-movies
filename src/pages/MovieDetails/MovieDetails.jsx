@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { Outlet, useParams, useLocation } from 'react-router-dom';
 import Loading from 'components/Loader';
 import MovieDetails from 'components/MovieDetails/MovieDetails';
+import { LinkDetails } from './MoviesDetails.styled';
 
 import * as API from 'services/api';
 
@@ -32,21 +33,21 @@ export default function MoviesDetails() {
   return (
     <main>
       <div>
-        <link to={backLink}>
+        <LinkDetails to={backLink}>
           <span>Back to Movies</span>
-        </link>
+        </LinkDetails>
 
         {status === 'Released' ? (
           <>
             <MovieDetails data={data} />
             <hr />
             <div>
-              <link to="cast" state={{ from: backLink }}>
+              <LinkDetails to="cast" state={{ from: backLink }}>
                 Cast
-              </link>
-              <link to="reviews" state={{ from: backLink }}>
+              </LinkDetails>
+              <LinkDetails to="reviews" state={{ from: backLink }}>
                 Reviews
-              </link>
+              </LinkDetails>
             </div>
             <Suspense fallback={<Loading />}>
               <Outlet />
