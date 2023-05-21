@@ -17,7 +17,6 @@ export default function Home() {
         setTrendingMovies(res.results);
         return;
       } catch (error) {
-        // Обробка помилки, якщо щось пішло не так під час отримання популярних фільмів
         console.log(error);
       }
     };
