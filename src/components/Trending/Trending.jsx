@@ -1,10 +1,9 @@
 import { useLocation } from 'react-router-dom';
-
+import noImagePlaceholder from 'images/no-image-placeholder.jpg';
 import PropTypes from 'prop-types';
 
 export default function TrendingList({ items }) {
   const location = useLocation();
-  let count = 0;
 
   return (
     <div>
@@ -20,7 +19,7 @@ export default function TrendingList({ items }) {
                       src={
                         item.poster_path
                           ? `https://image.tmdb.org/t/p/original${item.poster_path}`
-                          : `https://picsum.photos/200/300?random=${(count += 1)}`
+                          : noImagePlaceholder
                       }
                       alt={item.title ?? item.name ?? item.original_title}
                       width="200"
