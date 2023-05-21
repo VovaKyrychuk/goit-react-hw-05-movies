@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
+import SearchMovie from 'components/SearchMovie';
+import TrendingList from 'components/Trending';
 import * as API from 'services/api';
 
 export default function Movies() {
@@ -44,18 +45,11 @@ export default function Movies() {
   return (
     <main>
       <div>
-        <form onSubmit={onSubmit}>
-          <input type="text" value={title} onChange={onChange} />
-          <button type="submit">Search</button>
-        </form>
+        <SearchMovie title={title} onChange={onChange} onSubmit={onSubmit} />
         {movies.length > 0 ? (
-          <ul>
-            {movies.map(movie => (
-              <li key={movie.id}>{movie.title}</li>
-            ))}
-          </ul>
+          <TrendingList items={movies} />
         ) : (
-          <p>Please enter your request.</p>
+          <p>Please, enter your request.</p>
         )}
       </div>
     </main>
