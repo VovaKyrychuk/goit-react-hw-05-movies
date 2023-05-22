@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
+import noImagePlaceholder from 'images/no-image-placeholder.jpg';
 import * as API from 'services/api';
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([]);
   const { id } = useParams();
-  let count = 0;
 
   useEffect(() => {
     const fetch = async () => {
@@ -31,9 +30,9 @@ export default function Reviews() {
                 src={
                   item.author_details.avatar_path
                     ? item.author_details.avatar_path.includes('http')
-                      ? `https://picsum.photos/200/300?random=${(count += 1)}`
+                      ? noImagePlaceholder
                       : `https://image.tmdb.org/t/p/original${item.author_details.avatar_path}`
-                    : `https://picsum.photos/200/300?random=${(count += 1)}`
+                    : noImagePlaceholder
                 }
                 alt={item.author}
                 width="100"
