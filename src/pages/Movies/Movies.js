@@ -3,6 +3,8 @@ import { useSearchParams } from 'react-router-dom';
 import SearchMovie from 'components/SearchMovie';
 import TrendingList from 'components/Trending';
 import * as API from 'services/api';
+import { Container } from 'components/App/App.styled';
+import { NoRequest } from 'components/Reviews/Reviews.styled';
 
 export default function Movies() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -44,14 +46,14 @@ export default function Movies() {
 
   return (
     <main>
-      <div>
+      <Container>
         <SearchMovie title={title} onChange={onChange} onSubmit={onSubmit} />
         {movies.length > 0 ? (
           <TrendingList items={movies} />
         ) : (
-          <p>Please, enter your request.</p>
+          <NoRequest>Please, enter your request.</NoRequest>
         )}
-      </div>
+      </Container>
     </main>
   );
 }

@@ -1,19 +1,26 @@
 import { useLocation } from 'react-router-dom';
 import noImagePlaceholder from 'images/no-image-placeholder.jpg';
 import PropTypes from 'prop-types';
-import { LinkMovie } from './Trending.styled';
+import { Container } from 'components/App/App.styled';
+import {
+  MoviesList,
+  MoviesItem,
+  LinkMovie,
+  MovieWrapper,
+  MovieText,
+} from './Trending.styled';
 
 export default function TrendingList({ items }) {
   const location = useLocation();
 
   return (
-    <div>
-      <ul>
+    <Container>
+      <MoviesList>
         {items.map(item => {
           return (
-            <li key={item.id}>
+            <MoviesItem key={item.id}>
               <LinkMovie to={`/movies/${item.id}`} state={{ from: location }}>
-                <div>
+                <MovieWrapper>
                   <div>
                     <img
                       loading="lazy"
@@ -27,16 +34,16 @@ export default function TrendingList({ items }) {
                       height="300"
                     />
                   </div>
-                  <p>
+                  <MovieText>
                     {item.title ?? item.name ?? item.original_title ?? 'Title'}
-                  </p>
-                </div>
+                  </MovieText>
+                </MovieWrapper>
               </LinkMovie>
-            </li>
+            </MoviesItem>
           );
         })}
-      </ul>
-    </div>
+      </MoviesList>
+    </Container>
   );
 }
 

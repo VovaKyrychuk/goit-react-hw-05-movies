@@ -2,6 +2,13 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import noImagePlaceholder from 'images/no-image-placeholder.jpg';
 import * as API from 'services/api';
+import {
+  ReviewsWrapper,
+  ReviewsList,
+  ReviewsItem,
+  ReviewsContainer,
+  ReviewAuthor,
+} from './Reviews.styled';
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([]);
@@ -21,11 +28,11 @@ export default function Reviews() {
   }, [id]);
 
   return (
-    <div>
+    <ReviewsWrapper>
       {reviews.length !== 0 ? (
-        <ul>
+        <ReviewsList>
           {reviews.map(item => (
-            <li key={item.id}>
+            <ReviewsItem key={item.id}>
               <img
                 src={
                   item.author_details.avatar_path
@@ -37,16 +44,18 @@ export default function Reviews() {
                 alt={item.author}
                 width="100"
               />
-              <div>
-                <p>{item.author ?? item.author_details.username ?? 'Author'}</p>
+              <ReviewsContainer>
+                <ReviewAuthor>
+                  {item.author ?? item.author_details.username ?? 'Author'}
+                </ReviewAuthor>
                 <span>{item.content ?? 'No comments'}</span>
-              </div>
-            </li>
+              </ReviewsContainer>
+            </ReviewsItem>
           ))}
-        </ul>
+        </ReviewsList>
       ) : (
         <p>Sorry, but the information is missing</p>
       )}
-    </div>
+    </ReviewsWrapper>
   );
 }

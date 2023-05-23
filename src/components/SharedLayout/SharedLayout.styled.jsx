@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 
 export const Header = styled.header`
   background-color: #f8f8f8;
-  box-shadow: 0px 7px 10px #f8f8f8;
 `;
 
 export const NavWrapper = styled.div`
@@ -37,7 +36,8 @@ export const Link = styled(NavLink)`
   text-decoration: none;
   font-weight: 500;
   color: #242424;
+  margin-right: 10px;
   &.active {
-    color: orangered;
+    color: teal;
   }
 `;

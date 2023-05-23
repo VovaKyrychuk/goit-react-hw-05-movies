@@ -3,7 +3,8 @@ import { Suspense } from 'react';
 import { Outlet, useParams, useLocation } from 'react-router-dom';
 import Loading from 'components/Loader';
 import MovieDetails from 'components/MovieDetails/MovieDetails';
-import { LinkDetails } from './MoviesDetails.styled';
+import { Container } from 'components/App/App.styled';
+import { BackLink, LinkDetails, LinksWrapper } from './MoviesDetails.styled';
 
 import * as API from 'services/api';
 
@@ -32,23 +33,23 @@ export default function MoviesDetails() {
 
   return (
     <main>
-      <div>
-        <LinkDetails to={backLink}>
+      <Container>
+        <BackLink to={backLink}>
           <span>Back to Movies</span>
-        </LinkDetails>
+        </BackLink>
 
         {status === 'Released' ? (
           <>
             <MovieDetails data={data} />
             <hr />
-            <div>
+            <LinksWrapper>
               <LinkDetails to="cast" state={{ from: backLink }}>
                 Cast
               </LinkDetails>
               <LinkDetails to="reviews" state={{ from: backLink }}>
                 Reviews
               </LinkDetails>
-            </div>
+            </LinksWrapper>
             <Suspense fallback={<Loading />}>
               <Outlet />
             </Suspense>
@@ -56,7 +57,7 @@ export default function MoviesDetails() {
         ) : (
           <p>Sorry, but page Not Found</p>
         )}
-      </div>
+      </Container>
     </main>
   );
 }
