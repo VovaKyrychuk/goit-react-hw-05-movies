@@ -1,9 +1,12 @@
+import { ErrorWrapper, ErrorText, ErrorLink } from './NotFound.styled';
+
 export default function NotFound() {
   return (
-    <div>
-      <p>
-        Oops, page Not Found, <link to="/">&gt;click here&lt;</link> to return.{' '}
-      </p>
-    </div>
+    <ErrorWrapper>
+      <ErrorText>
+        Sorry, but page Not Found,{' '}
+        <ErrorLink to="/">&gt;click here&lt;</ErrorLink> to return.{' '}
+      </ErrorText>
+    </ErrorWrapper>
   );
 }

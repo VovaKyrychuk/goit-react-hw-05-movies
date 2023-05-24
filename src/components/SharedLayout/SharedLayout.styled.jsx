@@ -23,6 +23,7 @@ export const Nav = styled.nav`
 
 export const Title = styled.p`
   margin: 0;
+  margin-left: 20px;
   padding: 0;
   font-size: 24px;
   font-weight: 600;
